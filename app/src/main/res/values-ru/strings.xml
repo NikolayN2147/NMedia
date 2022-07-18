@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">НМедиа</string>
+    <string name="nmedia">НМедиа!</string>
+    <string name="avatar_description">Аватар автора</string>
+    <string name="post_author">Нетология.Университет интернет-технологий</string>
+    <string name="date_string">06.07.2022</string>
+    <string name="like_count">счетчик лайков</string>
+    <string name="share">поделиться</string>
+    <string name="menu">кнопка меню</string>
+    <string name="eye_button">кнопка просмотра</string>
+</resources>

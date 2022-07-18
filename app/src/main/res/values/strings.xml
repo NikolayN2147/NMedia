@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NMedia</string>
+    <string name="nmedia">NMedia!</string>
+    <string name="avatar_description">avatar_description</string>
+    <string name="post_author">Нетология.Университет интернет-технологий</string>
+    <string name="date_string">06.07.2022</string>
+    <string name="like_count">like_count</string>
+    <string name="share">share</string>
+    <string name="menu">menu</string>
+    <string name="eye_button">eye_button</string>
 </resources>
