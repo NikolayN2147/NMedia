@@ -9,4 +9,5 @@
     <string name="share">поделиться</string>
     <string name="menu">кнопка меню</string>
     <string name="eye_button">кнопка просмотра</string>
+    <string name="likeCount">999</string>
 </resources>
