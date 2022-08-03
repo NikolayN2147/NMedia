@@ -24,16 +24,16 @@ class InMemoryPostRepository: PostRepository {
         val currentPost = checkNotNull(data.value){
             "Data value should not be null"
         }
-        post = currentPost.copy(likedByMe = !currentPost.likedByMe, likes = if (!currentPost.likedByMe) post.likes +1 else currentPost.likes - 1)
-        data.value = post
+        val posts = currentPost.copy(likedByMe = !currentPost.likedByMe, likes = if (!currentPost.likedByMe) post.likes +1 else currentPost.likes - 1)
+        data.value = posts
     }
 
     override fun repost() {
         val currentPost = checkNotNull(data.value){
             "Data value should not be null"
         }
-        post = currentPost.copy(reposts = currentPost.reposts + 1)
-        data.value = post
+        val posts = currentPost.copy(reposts = currentPost.reposts + 1)
+        data.value = posts
     }
 
     override fun displayNumbers(number: Int): String {
