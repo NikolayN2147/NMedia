@@ -8,6 +8,7 @@ import ru.netology.nmedia.ru.netology.nmedia.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
 
+
     private val viewModel = PostViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
