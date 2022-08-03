@@ -21,12 +21,18 @@ class InMemoryPostRepository: PostRepository {
     override fun get(): LiveData<Post> = data
 
     override fun like() {
-        post = post.copy(likedByMe = !post.likedByMe, likes = if (!post.likedByMe) post.likes +1 else post.likes - 1)
+        val currentPost = checkNotNull(data.value){
+            "Data value should not be null"
+        }
+        post = currentPost.copy(likedByMe = !currentPost.likedByMe, likes = if (!currentPost.likedByMe) post.likes +1 else currentPost.likes - 1)
         data.value = post
     }
 
     override fun repost() {
-        post = post.copy(reposts = post.reposts + 1)
+        val currentPost = checkNotNull(data.value){
+            "Data value should not be null"
+        }
+        post = currentPost.copy(reposts = currentPost.reposts + 1)
         data.value = post
     }
 
