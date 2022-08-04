@@ -11,7 +11,5 @@ class PostViewModel: ViewModel() {
     val data = repository.get()
     fun like() = repository.like()
     fun repost() = repository.repost()
-    fun displayLikes(like: Int) = repository.displayNumbers(like)
-    fun displayReposts(reposts: Int) = repository.displayNumbers(reposts)
 
 }

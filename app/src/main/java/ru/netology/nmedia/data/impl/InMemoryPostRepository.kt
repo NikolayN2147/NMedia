@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.Post
 import ru.netology.nmedia.ru.netology.nmedia.data.PostRepository
-import java.text.DecimalFormat
 
 class InMemoryPostRepository: PostRepository {
     private var post = Post(
@@ -24,7 +23,7 @@ class InMemoryPostRepository: PostRepository {
         val currentPost = checkNotNull(data.value){
             "Data value should not be null"
         }
-        val posts = currentPost.copy(likedByMe = !currentPost.likedByMe, likes = if (!currentPost.likedByMe) post.likes +1 else currentPost.likes - 1)
+        val posts = currentPost.copy(likedByMe = !currentPost.likedByMe)
         data.value = posts
     }
 
@@ -32,19 +31,8 @@ class InMemoryPostRepository: PostRepository {
         val currentPost = checkNotNull(data.value){
             "Data value should not be null"
         }
-        val posts = currentPost.copy(reposts = currentPost.reposts + 1)
+        val posts = currentPost.copy(reposts = currentPost.reposts++)
         data.value = posts
     }
-
-    override fun displayNumbers(number: Int): String {
-        val decimalFormat = DecimalFormat("#.#")
-        return when (number) {
-            in 0..999 -> "$number"
-            in 1000..99_999 -> "${decimalFormat.format(number.toFloat() / 1_000)}K"
-            in 10_000..999_999 -> "${number / 1_000}K"
-            else -> "${decimalFormat.format(number.toFloat() / 1_000_000)}M"
-        }
-    }
-
 
 }

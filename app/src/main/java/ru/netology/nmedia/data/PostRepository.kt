@@ -8,5 +8,4 @@ interface PostRepository {
     fun get() : LiveData<Post>
     fun like()
     fun repost()
-    fun displayNumbers(number: Int): String
 }
