@@ -1,54 +1,47 @@
-
 package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.ru.netology.nmedia.viewmodel.PostViewModel
 import java.text.DecimalFormat
+
 
 class MainActivity : AppCompatActivity() {
 
+
+    private val viewModel = PostViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-
-        val post = Post(
-            id = 1,
-            author = "Нетология. Университет интернет-профессий будущего",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netology.ru",
-            published = "21 мая в 18:36",
-            likedByMe = false,
-            likes = 999,
-            reposts = 999_999
-        )
-
-        val like = displayNumbers(post.likes)
-        val repost = displayNumbers(post.reposts)
-
-        with(binding) {
-            authorName.text = post.author
-            date.text = post.published
-            postText.text = post.content
-            likeText.text = like
-            shareText.text = repost
-            if (post.likedByMe) {
-                likeButton.setImageResource(R.drawable.ic_outline_favorite_border_24)
-            }
-            likeButton.setOnClickListener {
-                post.likedByMe = !post.likedByMe
+        viewModel.data.observe(this) { post ->
+            with(binding) {
+                authorName.text = post.author
+                date.text = post.published
+                postText.text = post.content
+                likeText.text = if(post.likedByMe) displayNumbers(post.likes--) else displayNumbers(post.likes++)
+                shareText.text = displayNumbers(post.reposts)
                 likeButton.setImageResource(
-                    if (post.likedByMe) R.drawable.ic_outline_favorite_border_24 else R.drawable.ic_baseline_favorite_24
+                    if (post.likedByMe) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_outline_favorite_border_24
                 )
-                likeText.text = if (post.likedByMe) displayNumbers(post.likes++) else displayNumbers(post.likes--)
+
             }
-            shareButton.setOnClickListener {
-                shareText.text = displayNumbers(post.reposts++)
-            }
+
         }
+        binding.likeButton.setOnClickListener {
+            viewModel.like()
+        }
+        binding.shareButton.setOnClickListener {
+            viewModel.repost()
+        }
+
+
+
+
     }
 
     private fun displayNumbers(number: Int): String {
@@ -60,5 +53,7 @@ class MainActivity : AppCompatActivity() {
             else -> "${decimalFormat.format(number.toFloat() / 1_000_000)}M"
         }
     }
+
 }
+
 
