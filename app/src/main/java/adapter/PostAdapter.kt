@@ -43,13 +43,14 @@ class PostViewHolder(
             like.setImageResource(
                 if (post.likedByMe) R.drawable.like_button else R.drawable.dislike
             )
+            countLike.text = displayNumbers(post.likes)
+            countRepost.text = displayNumbers(post.reposts)
+
             like.setOnClickListener {
                 onLikeListener(post)
-                countLike.text = displayNumbers(post.likes)
             }
             repost.setOnClickListener {
                 onRepostListener(post)
-                countRepost.text = displayNumbers(post.reposts)
             }
         }
 
