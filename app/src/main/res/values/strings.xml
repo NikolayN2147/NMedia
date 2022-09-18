@@ -14,4 +14,9 @@
     <string name="description_likes" />
     <string name="description_post_menu" />
     <string name="description_post_author_avatar" translatable="false" />
+    <string name="menu_edit">Edit</string>
+    <string name="menu_remove">Remove</string>
+    <string name="description_post_like">Like</string>
+    <string name="post_text">Post text</string>
+    <string name="error_empty_content">"Content can't be empty"</string>
 </resources>

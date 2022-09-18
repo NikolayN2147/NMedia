@@ -117,7 +117,7 @@
         android:contentDescription="@string/description_repost"
         app:layout_constraintStart_toEndOf="@+id/countLike"
         app:layout_constraintTop_toBottomOf="@+id/barrier2"
-        app:srcCompat="@drawable/share_button" />
+        app:srcCompat="@drawable/share_yes" />
 
     <TextView
         android:id="@+id/countRepost"
